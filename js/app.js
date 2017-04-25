@@ -56,5 +56,21 @@
     }
   };
 
-  // ADD YOUR CODE HERE
+  function callAjax(event){
+    event.preventDefault();
+    let $inputString = $('#search').val();
+    $.getJSON(`http://www.omdbapi.com/?t=${$inputString}`)
+    .done(function(data){
+      let movie = {};
+      for(let key in data){
+        movie[key.toLowerCase()] = data[key];
+      }
+      movies.push(movie);
+      console.log(movies);
+      renderMovies();
+    });
+  }
+
+  $('#userInput').on('submit', callAjax);
+  
 })();
