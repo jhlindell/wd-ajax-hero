@@ -65,12 +65,12 @@
       for(let key in data){
         movie[key.toLowerCase()] = data[key];
       }
+      movie.id = data.imdbID;
       movies.push(movie);
-      console.log(movies);
       renderMovies();
     });
   }
 
   $('#userInput').on('submit', callAjax);
-  
+
 })();
